@@ -41,6 +41,6 @@ public class RadioSearchService implements SearchService<RadioSearchRequest> {
         if (songInfo.artist() == null && songInfo.title() == null) {
             return Optional.empty();
         }
-        return Optional.of(new Song(songInfo.artist(), songInfo.title()));
+        return Optional.of(new Song(songInfo.artist(), songInfo.title(), songInfo.rawData()));
     }
 }
