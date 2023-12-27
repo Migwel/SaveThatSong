@@ -1,14 +1,27 @@
 package dev.migwel.sts.radio;
 
+import dev.migwel.icyreader.IcyReader;
+import dev.migwel.icyreader.SongInfo;
 import dev.migwel.sts.model.RadioSearchRequest;
 import dev.migwel.sts.model.Song;
 import dev.migwel.sts.service.SearchService;
-import org.springframework.stereotype.Component;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Component
+import javax.annotation.CheckForNull;
+
+@Service
 public class RadioSearchService implements SearchService<RadioSearchRequest> {
+
+    private final IcyReaderProvider icyReaderProvider;
+
+    @Autowired
+    public RadioSearchService(IcyReaderProvider icyReaderProvider) {
+        this.icyReaderProvider = icyReaderProvider;
+    }
 
     @Override
     public boolean isRelevant(Class<?> searchRequestType) {
@@ -17,6 +30,17 @@ public class RadioSearchService implements SearchService<RadioSearchRequest> {
 
     @Override
     public Optional<Song> search(RadioSearchRequest searchRequest) {
-        return Optional.empty();
+        IcyReader reader = icyReaderProvider.getIcyReader(searchRequest.url());
+        return convert(reader.currentlyPlaying());
+    }
+
+    private Optional<Song> convert(@CheckForNull SongInfo songInfo) {
+        if (songInfo == null) {
+            return Optional.empty();
+        }
+        if (songInfo.artist() == null && songInfo.title() == null) {
+            return Optional.empty();
+        }
+        return Optional.of(new Song(songInfo.artist(), songInfo.title()));
     }
 }
