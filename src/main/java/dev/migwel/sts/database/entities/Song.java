@@ -1,0 +1,68 @@
+package dev.migwel.sts.database.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
+@Entity
+public class Song {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "song_generator")
+    @SequenceGenerator(name = "song_generator", sequenceName = "song_seq", allocationSize = 1)
+    private Long id;
+
+    private String artist;
+    private String title;
+    private String rawData;
+
+    public Song() {
+        // Needed for Spring JPA
+    }
+
+    public Song(Long id, String artist, String title, String rawData) {
+        this.id = id;
+        this.artist = artist;
+        this.title = title;
+        this.rawData = rawData;
+    }
+
+    public Song(String artist, String title, String rawData) {
+        this.artist = artist;
+        this.title = title;
+        this.rawData = rawData;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getRawData() {
+        return rawData;
+    }
+
+    public void setRawData(String rawData) {
+        this.rawData = rawData;
+    }
+}
