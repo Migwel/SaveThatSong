@@ -6,5 +6,5 @@ import dev.migwel.sts.domain.model.Song;
 public interface ToService<T extends ToRequest> {
     boolean isRelevant(Class<?> saveRequestType);
 
-    void save(Song song, ToRequest toRequest);
+    void save(Song song, T toRequest);
 }
