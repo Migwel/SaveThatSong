@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 
 import dev.migwel.sts.database.entities.Converter;
 import dev.migwel.sts.exception.SaveToException;
+import dev.migwel.sts.model.PersistSaveRequest;
 import dev.migwel.sts.model.Song;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class DatabaseSaveServiceTest {
         dev.migwel.sts.database.entities.Song entitySong =
                 new dev.migwel.sts.database.entities.Song(1L, "artist", "title", "artist - title");
         doReturn(entitySong).when(songRepository).save(any());
-        saveService.save(song);
+        saveService.save(song, new PersistSaveRequest());
     }
 
     @Test
@@ -38,6 +39,6 @@ class DatabaseSaveServiceTest {
                 .when(songRepository)
                 .save(any());
         Song song = new Song("artist", "title", "artist - title");
-        assertThrows(SaveToException.class, () -> saveService.save(song));
+        assertThrows(SaveToException.class, () -> saveService.save(song, new PersistSaveRequest()));
     }
 }

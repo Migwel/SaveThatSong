@@ -2,6 +2,8 @@ package dev.migwel.sts.database;
 
 import dev.migwel.sts.database.entities.Converter;
 import dev.migwel.sts.exception.SaveToException;
+import dev.migwel.sts.model.PersistSaveRequest;
+import dev.migwel.sts.model.SaveRequest;
 import dev.migwel.sts.model.Song;
 import dev.migwel.sts.service.SaveService;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +15,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @Service
-public class DatabaseSaveService implements SaveService {
+public class DatabaseSaveService implements SaveService<PersistSaveRequest> {
     private static final Logger log = LogManager.getLogger(DatabaseSaveService.class);
 
     private final Converter converter;
@@ -25,7 +27,12 @@ public class DatabaseSaveService implements SaveService {
     }
 
     @Override
-    public void save(Song song) {
+    public boolean isRelevant(Class<?> saveRequestType) {
+        return saveRequestType.isAssignableFrom(PersistSaveRequest.class);
+    }
+
+    @Override
+    public void save(Song song, SaveRequest saveRequest) {
         dev.migwel.sts.database.entities.Song entitySong = converter.convert(song);
         try {
             songRepository.save(entitySong);

@@ -1,5 +1,6 @@
 package dev.migwel.sts.database;
 
+import dev.migwel.sts.model.PersistSaveRequest;
 import dev.migwel.sts.model.Song;
 
 import org.junit.jupiter.api.Assertions;
@@ -24,7 +25,7 @@ class DatabaseSaveServiceManualTest {
     @Test
     void save_success() {
         Song song = new Song("artist", "title", "artist - title");
-        saveService.save(song);
+        saveService.save(song, new PersistSaveRequest());
         Optional<dev.migwel.sts.database.entities.Song> persistedSong =
                 songRepository.findByArtistAndTitle("artist", "title");
         Assertions.assertTrue(persistedSong.isPresent());
