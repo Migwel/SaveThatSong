@@ -17,12 +17,12 @@ public class ToServiceFactory {
         this.toServices = List.copyOf(toServices);
     }
 
-    public <T extends ToRequest> ToService<T> getSaveService(T saveRequest) {
+    public <T extends ToRequest> ToService<T> getToService(T saveRequest) {
         for (ToService<?> toService : toServices) {
             if (toService.isRelevant(saveRequest.getClass())) {
                 return (ToService<T>) toService;
             }
         }
-        throw new IllegalArgumentException("No search service available for this search request");
+        throw new IllegalArgumentException("No To service available for this search request");
     }
 }

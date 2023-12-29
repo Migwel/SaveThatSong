@@ -22,6 +22,6 @@ public class FromServiceFactory {
                 return (FromService<T>) fromService;
             }
         }
-        throw new IllegalArgumentException("No search service available for this search request");
+        throw new IllegalArgumentException("No From service available for this search request");
     }
 }
