@@ -1,4 +1,4 @@
-package dev.migwel.sts.exception;
+package dev.migwel.sts.domain.exception;
 
 public class SaveFromException extends RuntimeException {
     public SaveFromException(String message) {

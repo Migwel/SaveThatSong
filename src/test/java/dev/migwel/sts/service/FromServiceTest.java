@@ -3,9 +3,9 @@ package dev.migwel.sts.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import dev.migwel.sts.Application;
-import dev.migwel.sts.model.SaveRequest;
-import dev.migwel.sts.model.SearchRequest;
+import dev.migwel.sts.domain.model.FromRequest;
 
+import dev.migwel.sts.domain.service.FromService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -13,29 +13,29 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import java.util.List;
 
 @SpringJUnitConfig(Application.class)
-class SaveServiceTest {
+class FromServiceTest {
 
-    private final List<SaveService<?>> saveServices;
+    private final List<FromService<?>> fromServices;
 
     @Autowired
-    public SaveServiceTest(List<SaveService<?>> saveServices) {
-        this.saveServices = saveServices;
+    public FromServiceTest(List<FromService<?>> fromServices) {
+        this.fromServices = fromServices;
     }
 
     @Test
     void isRelevant_onlyOneRelevantServicePerRequestType() {
-        Class<?>[] permittedSaveRequests = SaveRequest.class.getPermittedSubclasses();
-        for (Class<?> permittedSearchRequest : permittedSaveRequests) {
+        Class<?>[] permittedSearchRequests = FromRequest.class.getPermittedSubclasses();
+        for (Class<?> permittedSearchRequest : permittedSearchRequests) {
             int nbRelevantSearchServices = 0;
-            for (SaveService<?> saveService : saveServices) {
-                if (saveService.isRelevant(permittedSearchRequest)) {
+            for (FromService<?> fromService : fromServices) {
+                if (fromService.isRelevant(permittedSearchRequest)) {
                     nbRelevantSearchServices += 1;
                 }
             }
             assertEquals(
                     1,
                     nbRelevantSearchServices,
-                    "Didn't find exactly one save service for request "
+                    "Didn't find exactly one search service for request "
                             + permittedSearchRequest.getName());
         }
     }

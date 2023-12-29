@@ -1,4 +1,4 @@
-package dev.migwel.sts.model;
+package dev.migwel.sts.domain.model;
 
 /**
  * Representation of a song playing "somewhere"

@@ -2,9 +2,9 @@ package dev.migwel.sts.radio;
 
 import dev.migwel.icyreader.IcyReader;
 import dev.migwel.icyreader.SongInfo;
-import dev.migwel.sts.model.RadioSearchRequest;
-import dev.migwel.sts.model.Song;
-import dev.migwel.sts.model.SonosSearchRequest;
+import dev.migwel.sts.domain.model.FromRadioRequest;
+import dev.migwel.sts.domain.model.Song;
+import dev.migwel.sts.domain.model.FromSonosRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +13,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class RadioSearchServiceTest {
+class FromRadioServiceTest {
 
     private final IcyReader icyReader = mock(IcyReader.class);
     private final IcyReaderProvider icyReaderProvider = mock(IcyReaderProvider.class);
-    private final RadioSearchService radioSearchService = new RadioSearchService(icyReaderProvider);
+    private final FromRadioService fromRadioService = new FromRadioService(icyReaderProvider);
 
     @BeforeEach
     void before() {
@@ -26,12 +26,12 @@ class RadioSearchServiceTest {
 
     @Test
     void isRelevant_radioSearchRequest() {
-        assertTrue(radioSearchService.isRelevant(RadioSearchRequest.class));
+        assertTrue(fromRadioService.isRelevant(FromRadioRequest.class));
     }
 
     @Test
     void isRelevant_otherSearchRequest() {
-        assertFalse(radioSearchService.isRelevant(SonosSearchRequest.class));
+        assertFalse(fromRadioService.isRelevant(FromSonosRequest.class));
     }
 
     @Test
@@ -39,7 +39,7 @@ class RadioSearchServiceTest {
         String artist = "Great artist";
         String title = "Amazing song";
         doReturn(new SongInfo("raw", artist, title)).when(icyReader).currentlyPlaying();
-        Optional<Song> optionalSong = radioSearchService.search(new RadioSearchRequest("validUrl"));
+        Optional<Song> optionalSong = fromRadioService.search(new FromRadioRequest("validUrl"));
         assertTrue(optionalSong.isPresent());
         Song song = optionalSong.get();
         assertEquals(artist, song.artist());
@@ -49,14 +49,14 @@ class RadioSearchServiceTest {
     @Test
     void search_songCannotBeFound() {
         doReturn(null).when(icyReader).currentlyPlaying();
-        Optional<Song> optionalSong = radioSearchService.search(new RadioSearchRequest("validUrl"));
+        Optional<Song> optionalSong = fromRadioService.search(new FromRadioRequest("validUrl"));
         assertTrue(optionalSong.isEmpty());
     }
 
     @Test
     void search_songWithOnlyRawData() {
         doReturn(new SongInfo("rawData", null, null)).when(icyReader).currentlyPlaying();
-        Optional<Song> optionalSong = radioSearchService.search(new RadioSearchRequest("validUrl"));
+        Optional<Song> optionalSong = fromRadioService.search(new FromRadioRequest("validUrl"));
         assertTrue(optionalSong.isEmpty());
     }
 }

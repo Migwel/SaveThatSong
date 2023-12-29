@@ -2,7 +2,7 @@ package dev.migwel.sts;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import dev.migwel.sts.service.SearchService;
+import dev.migwel.sts.domain.service.FromService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +13,16 @@ import java.util.List;
 @SpringBootTest
 class ApplicationTest {
 
-    private final List<SearchService<?>> searchServices;
+    private final List<FromService<?>> fromServices;
 
     @Autowired
-    public ApplicationTest(List<SearchService<?>> searchServices) {
-        this.searchServices = searchServices;
+    public ApplicationTest(List<FromService<?>> fromServices) {
+        this.fromServices = fromServices;
     }
 
     @Test
     void loadContexts() {
-        assertNotNull(searchServices);
-        assertFalse(searchServices.isEmpty());
+        assertNotNull(fromServices);
+        assertFalse(fromServices.isEmpty());
     }
 }

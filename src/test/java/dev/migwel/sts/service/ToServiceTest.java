@@ -3,8 +3,9 @@ package dev.migwel.sts.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import dev.migwel.sts.Application;
-import dev.migwel.sts.model.SearchRequest;
+import dev.migwel.sts.domain.model.ToRequest;
 
+import dev.migwel.sts.domain.service.ToService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -12,29 +13,29 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import java.util.List;
 
 @SpringJUnitConfig(Application.class)
-class SearchServiceTest {
+class ToServiceTest {
 
-    private final List<SearchService<?>> searchServices;
+    private final List<ToService<?>> toServices;
 
     @Autowired
-    public SearchServiceTest(List<SearchService<?>> searchServices) {
-        this.searchServices = searchServices;
+    public ToServiceTest(List<ToService<?>> toServices) {
+        this.toServices = toServices;
     }
 
     @Test
     void isRelevant_onlyOneRelevantServicePerRequestType() {
-        Class<?>[] permittedSearchRequests = SearchRequest.class.getPermittedSubclasses();
-        for (Class<?> permittedSearchRequest : permittedSearchRequests) {
+        Class<?>[] permittedSaveRequests = ToRequest.class.getPermittedSubclasses();
+        for (Class<?> permittedSearchRequest : permittedSaveRequests) {
             int nbRelevantSearchServices = 0;
-            for (SearchService<?> searchService : searchServices) {
-                if (searchService.isRelevant(permittedSearchRequest)) {
+            for (ToService<?> toService : toServices) {
+                if (toService.isRelevant(permittedSearchRequest)) {
                     nbRelevantSearchServices += 1;
                 }
             }
             assertEquals(
                     1,
                     nbRelevantSearchServices,
-                    "Didn't find exactly one search service for request "
+                    "Didn't find exactly one save service for request "
                             + permittedSearchRequest.getName());
         }
     }
