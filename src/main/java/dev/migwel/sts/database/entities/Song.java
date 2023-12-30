@@ -1,10 +1,13 @@
 package dev.migwel.sts.database.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+
+import java.util.Date;
 
 @Entity
 public class Song {
@@ -16,6 +19,9 @@ public class Song {
     private String artist;
     private String title;
     private String rawData;
+
+    @Column(insertable = false) // Rely on Postgres now() default value
+    private Date creationDate;
 
     public Song() {
         // Needed for Spring JPA
@@ -64,5 +70,13 @@ public class Song {
 
     public void setRawData(String rawData) {
         this.rawData = rawData;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }
