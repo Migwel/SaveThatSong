@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@Component
+@Component("EntitiesConverter")
 @ParametersAreNonnullByDefault
 public class Converter {
     public Song convert(dev.migwel.sts.domain.model.Song model) {
