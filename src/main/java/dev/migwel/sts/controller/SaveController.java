@@ -4,6 +4,7 @@ import dev.migwel.sts.controller.dto.FromRequest;
 import dev.migwel.sts.controller.dto.SaveRequest;
 import dev.migwel.sts.controller.dto.ToRequest;
 import dev.migwel.sts.domain.service.SaveService;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class SaveController {
     @PostMapping
     @ResponseBody
     <T extends FromRequest, U extends ToRequest> void save(
-            @RequestBody SaveRequest<T, U> saveRequest) {
+            @Valid @RequestBody SaveRequest<T, U> saveRequest) {
         dev.migwel.sts.domain.model.FromRequest fromRequest =
                 converter.convert(saveRequest.getFrom());
         dev.migwel.sts.domain.model.ToRequest toRequest = converter.convert(saveRequest.getTo());

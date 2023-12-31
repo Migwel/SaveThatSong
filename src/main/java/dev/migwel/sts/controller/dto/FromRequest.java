@@ -2,6 +2,7 @@ package dev.migwel.sts.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import jakarta.validation.constraints.NotBlank;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
 @JsonSubTypes({
@@ -10,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 public abstract sealed class FromRequest permits FromRadioRequest, FromSonosRequest {
 
-    private final String type;
+    @NotBlank private final String type;
 
     public FromRequest(String type) {
         this.type = type;

@@ -3,9 +3,12 @@ package dev.migwel.sts.controller.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
 public class SaveRequest<T extends FromRequest, U extends ToRequest> {
-    private final T from;
-    private final U to;
+    @NotNull @Valid private final T from;
+    @NotNull @Valid private final U to;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public SaveRequest(@JsonProperty("from") T from, @JsonProperty("to") U to) {
