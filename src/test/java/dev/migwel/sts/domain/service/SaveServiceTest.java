@@ -28,7 +28,7 @@ class SaveServiceTest {
     @InjectMocks private SaveService saveService;
 
     @BeforeEach
-    private void before() {
+    public void before() {
         doReturn(fromService).when(fromServiceFactory).getFromService(any());
         lenient().doReturn(toService).when(toServiceFactory).getToService(any());
     }

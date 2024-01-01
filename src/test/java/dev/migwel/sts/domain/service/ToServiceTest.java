@@ -1,4 +1,4 @@
-package dev.migwel.sts.service;
+package dev.migwel.sts.domain.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -4,9 +4,12 @@ import dev.migwel.sts.domain.model.FromRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @Component
+@ParametersAreNonnullByDefault
 public class FromServiceFactory {
 
     private final List<FromService<?>> fromServices;
@@ -16,9 +19,11 @@ public class FromServiceFactory {
         this.fromServices = List.copyOf(fromServices);
     }
 
-    public <T extends FromRequest> FromService<T> getFromService(T fromRequest) {
+    @Nonnull
+    public <T extends FromRequest> FromService<T> getFromService(
+            Class<? extends FromRequest> requestClass) {
         for (FromService<?> fromService : fromServices) {
-            if (fromService.isRelevant(fromRequest.getClass())) {
+            if (fromService.isRelevant(requestClass)) {
                 return (FromService<T>) fromService;
             }
         }
