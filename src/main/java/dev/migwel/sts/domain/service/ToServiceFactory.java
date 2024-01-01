@@ -7,7 +7,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 @Component
+@ParametersAreNonnullByDefault
 public class ToServiceFactory {
 
     private final List<ToService<?>> toServices;
@@ -17,9 +21,11 @@ public class ToServiceFactory {
         this.toServices = List.copyOf(toServices);
     }
 
-    public <T extends ToRequest> ToService<T> getToService(T saveRequest) {
+    @Nonnull
+    public <T extends ToRequest> ToService<T> getToService(
+            Class<? extends ToRequest> requestClass) {
         for (ToService<?> toService : toServices) {
-            if (toService.isRelevant(saveRequest.getClass())) {
+            if (toService.isRelevant(requestClass)) {
                 return (ToService<T>) toService;
             }
         }

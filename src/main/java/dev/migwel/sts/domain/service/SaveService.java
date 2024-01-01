@@ -23,13 +23,13 @@ public class SaveService {
     }
 
     public <T extends FromRequest, U extends ToRequest> void save(T from, U to) {
-        FromService<T> fromService = fromServiceFactory.getFromService(from);
+        FromService<T> fromService = fromServiceFactory.getFromService(from.getClass());
         Optional<Song> optionalSong = fromService.search(from);
         if (optionalSong.isEmpty()) {
             logger.info("Could not find what's playing for " + from);
             return;
         }
-        ToService<U> toService = toServiceFactory.getToService(to);
+        ToService<U> toService = toServiceFactory.getToService(to.getClass());
         toService.save(optionalSong.get(), to);
     }
 }
