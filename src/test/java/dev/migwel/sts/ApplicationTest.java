@@ -6,11 +6,13 @@ import dev.migwel.sts.domain.service.FromService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
 @SpringBootTest
+@AutoConfigureTestDatabase
 class ApplicationTest {
 
     private final List<FromService<?>> fromServices;
