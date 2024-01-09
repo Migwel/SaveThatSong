@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,10 +32,11 @@ public class SaveController {
     @PostMapping
     @ResponseBody
     <T extends FromRequest, U extends ToRequest> void save(
-            @Valid @RequestBody SaveRequest<T, U> saveRequest) {
+            Authentication authentication, @Valid @RequestBody SaveRequest<T, U> saveRequest) {
         dev.migwel.sts.domain.model.FromRequest fromRequest =
                 converter.convert(saveRequest.getFrom());
-        dev.migwel.sts.domain.model.ToRequest toRequest = converter.convert(saveRequest.getTo());
+        dev.migwel.sts.domain.model.ToRequest toRequest =
+                converter.convert(saveRequest.getTo(), authentication.getName());
         saveService.save(fromRequest, toRequest);
     }
 }

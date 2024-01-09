@@ -7,8 +7,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @Component("EntitiesConverter")
 @ParametersAreNonnullByDefault
 public class Converter {
-    public Song convert(dev.migwel.sts.domain.model.Song model) {
-        return new Song(model.artist(), model.title(), model.rawData());
+    public Song convert(String username, dev.migwel.sts.domain.model.Song model) {
+        return new Song(username, model.artist(), model.title(), model.rawData());
     }
 
     public dev.migwel.sts.domain.model.Song convert(Song entity) {

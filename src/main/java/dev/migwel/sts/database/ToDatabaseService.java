@@ -33,7 +33,8 @@ public class ToDatabaseService implements ToService<ToDatabaseRequest> {
 
     @Override
     public void save(Song song, ToDatabaseRequest toRequest) {
-        dev.migwel.sts.database.entities.Song entitySong = converter.convert(song);
+        dev.migwel.sts.database.entities.Song entitySong =
+                converter.convert(toRequest.getUsername(), song);
         try {
             songRepository.save(entitySong);
         } catch (DataAccessException e) {

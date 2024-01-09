@@ -16,6 +16,7 @@ public class Song {
     @SequenceGenerator(name = "song_generator", sequenceName = "song_seq", allocationSize = 1)
     private Long id;
 
+    private String username;
     private String artist;
     private String title;
     private String rawData;
@@ -27,14 +28,16 @@ public class Song {
         // Needed for Spring JPA
     }
 
-    public Song(Long id, String artist, String title, String rawData) {
+    public Song(Long id, String username, String artist, String title, String rawData) {
         this.id = id;
+        this.username = username;
         this.artist = artist;
         this.title = title;
         this.rawData = rawData;
     }
 
-    public Song(String artist, String title, String rawData) {
+    public Song(String username, String artist, String title, String rawData) {
+        this.username = username;
         this.artist = artist;
         this.title = title;
         this.rawData = rawData;
@@ -46,6 +49,14 @@ public class Song {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getArtist() {

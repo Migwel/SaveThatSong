@@ -25,7 +25,7 @@ class ToDatabaseServiceManualTest {
     @Test
     void save_success() {
         Song song = new Song("artist", "title", "artist - title");
-        saveService.save(song, new ToDatabaseRequest());
+        saveService.save(song, new ToDatabaseRequest("user"));
         Optional<dev.migwel.sts.database.entities.Song> persistedSong =
                 songRepository.findByArtistAndTitle("artist", "title");
         Assertions.assertTrue(persistedSong.isPresent());

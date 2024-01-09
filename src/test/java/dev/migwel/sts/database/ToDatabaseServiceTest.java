@@ -28,9 +28,10 @@ class ToDatabaseServiceTest {
     void save_success() {
         Song song = new Song("artist", "title", "artist - title");
         dev.migwel.sts.database.entities.Song entitySong =
-                new dev.migwel.sts.database.entities.Song(1L, "artist", "title", "artist - title");
+                new dev.migwel.sts.database.entities.Song(
+                        1L, "user", "artist", "title", "artist - title");
         doReturn(entitySong).when(songRepository).save(any());
-        saveService.save(song, new ToDatabaseRequest());
+        saveService.save(song, new ToDatabaseRequest("user"));
     }
 
     @Test
@@ -39,6 +40,7 @@ class ToDatabaseServiceTest {
                 .when(songRepository)
                 .save(any());
         Song song = new Song("artist", "title", "artist - title");
-        assertThrows(SaveToException.class, () -> saveService.save(song, new ToDatabaseRequest()));
+        assertThrows(
+                SaveToException.class, () -> saveService.save(song, new ToDatabaseRequest("user")));
     }
 }
