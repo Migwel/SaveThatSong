@@ -20,9 +20,9 @@ public class Converter {
         };
     }
 
-    dev.migwel.sts.domain.model.ToRequest convert(ToRequest dto) {
+    dev.migwel.sts.domain.model.ToRequest convert(ToRequest dto, String username) {
         return switch (dto) {
-            case ToDatabaseRequest toDatabaseRequest -> convert(toDatabaseRequest);
+            case ToDatabaseRequest toDatabaseRequest -> convert(toDatabaseRequest, username);
         };
     }
 
@@ -43,8 +43,8 @@ public class Converter {
         return new FromSonosRequest(model.householdId(), model.groupId());
     }
 
-    dev.migwel.sts.domain.model.ToDatabaseRequest convert(ToDatabaseRequest dto) {
-        return new dev.migwel.sts.domain.model.ToDatabaseRequest();
+    dev.migwel.sts.domain.model.ToDatabaseRequest convert(ToDatabaseRequest dto, String username) {
+        return new dev.migwel.sts.domain.model.ToDatabaseRequest(username);
     }
 
     ToDatabaseRequest convert(dev.migwel.sts.domain.model.ToDatabaseRequest model) {

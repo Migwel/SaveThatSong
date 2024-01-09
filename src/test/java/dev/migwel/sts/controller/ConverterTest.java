@@ -31,7 +31,7 @@ class ConverterTest {
         ToRequest databaseRequest = new ToDatabaseRequest();
         Assertions.assertEquals(
                 dev.migwel.sts.domain.model.ToDatabaseRequest.class,
-                converter.convert(databaseRequest).getClass());
+                converter.convert(databaseRequest, "user").getClass());
     }
 
     @Test

@@ -37,7 +37,7 @@ class SaveServiceTest {
     void save_noSongFound() {
         doReturn(Optional.empty()).when(fromService).search(any());
         FromRequest from = new FromRadioRequest("https://radio.url");
-        ToRequest to = new ToDatabaseRequest();
+        ToRequest to = new ToDatabaseRequest("user");
         saveService.save(from, to);
         verify(toService, never()).save(any(), any());
     }
@@ -47,7 +47,7 @@ class SaveServiceTest {
         Song song = new Song("artist", "title", "rawData");
         doReturn(Optional.of(song)).when(fromService).search(any());
         FromRequest from = new FromRadioRequest("https://radio.url");
-        ToRequest to = new ToDatabaseRequest();
+        ToRequest to = new ToDatabaseRequest("user");
         saveService.save(from, to);
         verify(toService, times(1)).save(eq(song), any());
     }
