@@ -1,0 +1,95 @@
+{
+  "tracks": {
+    "href": "https://api.spotify.com/v1/search?query=track%3AMy+Favorite+Things+artist%3AJohn+Coltrane&type=track&locale=en-US%2Cen%3Bq%3D0.5&offset=0&limit=1",
+    "items": [
+      {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/2hGh5VOeeqimQFxqXvfCUf"
+              },
+              "href": "https://api.spotify.com/v1/artists/2hGh5VOeeqimQFxqXvfCUf",
+              "id": "2hGh5VOeeqimQFxqXvfCUf",
+              "name": "John Coltrane",
+              "type": "artist",
+              "uri": "spotify:artist:2hGh5VOeeqimQFxqXvfCUf"
+            }
+          ],
+          "available_markets": [
+            "BE",
+            "NL"
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/3i7sNgNRwyGQmNP0CPuOM0"
+          },
+          "href": "https://api.spotify.com/v1/albums/3i7sNgNRwyGQmNP0CPuOM0",
+          "id": "3i7sNgNRwyGQmNP0CPuOM0",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273268f559dbc4714939d575d8c",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02268f559dbc4714939d575d8c",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851268f559dbc4714939d575d8c",
+              "width": 64
+            }
+          ],
+          "name": "My Favorite Things (Deluxe Edition)",
+          "release_date": "1961",
+          "release_date_precision": "year",
+          "total_tracks": 6,
+          "type": "album",
+          "uri": "spotify:album:3i7sNgNRwyGQmNP0CPuOM0"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2hGh5VOeeqimQFxqXvfCUf"
+            },
+            "href": "https://api.spotify.com/v1/artists/2hGh5VOeeqimQFxqXvfCUf",
+            "id": "2hGh5VOeeqimQFxqXvfCUf",
+            "name": "John Coltrane",
+            "type": "artist",
+            "uri": "spotify:artist:2hGh5VOeeqimQFxqXvfCUf"
+          }
+        ],
+        "available_markets": [
+          "BE",
+          "NL"
+        ],
+        "disc_number": 1,
+        "duration_ms": 824133,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "USAT20002141"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/2JOEPbuwVf0nafGnMSVEhH"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2JOEPbuwVf0nafGnMSVEhH",
+        "id": "2JOEPbuwVf0nafGnMSVEhH",
+        "is_local": false,
+        "name": "My Favorite Things",
+        "popularity": 58,
+        "preview_url": "https://p.scdn.co/mp3-preview/f5c11004f9f6e5d44398a33ce77a60139fd5e9a7?cid=aafd545e7dea4986ba5891191551db38",
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:2JOEPbuwVf0nafGnMSVEhH"
+      }
+    ],
+    "limit": 1,
+    "next": "https://api.spotify.com/v1/search?query=track%3AMy+Favorite+Things+artist%3AJohn+Coltrane&type=track&locale=en-US%2Cen%3Bq%3D0.5&offset=1&limit=1",
+    "offset": 0,
+    "previous": null,
+    "total": 94
+  }
+}

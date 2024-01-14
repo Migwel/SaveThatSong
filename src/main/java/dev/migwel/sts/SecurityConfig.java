@@ -24,7 +24,9 @@ public class SecurityConfig {
                                         .anyRequest()
                                         .authenticated())
                 .httpBasic(Customizer.withDefaults())
-                .csrf(AbstractHttpConfigurer::disable);
+                .oauth2Client(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(AbstractHttpConfigurer::disable);
         return http.build();
     }
 

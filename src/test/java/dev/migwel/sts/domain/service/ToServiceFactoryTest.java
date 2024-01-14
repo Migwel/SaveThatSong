@@ -2,21 +2,20 @@ package dev.migwel.sts.domain.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import dev.migwel.sts.Application;
-import dev.migwel.sts.domain.model.FromRequest;
-
+import dev.migwel.sts.TestSpringConfiguration;
 import dev.migwel.sts.domain.model.ToRequest;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@SpringJUnitConfig(Application.class)
+@SpringJUnitConfig(TestSpringConfiguration.class)
 class ToServiceFactoryTest {
 
     private final ToServiceFactory serviceFactory;
 
     @Autowired
-    ToServiceFactoryTest(ToServiceFactory serviceFactory) {
+    public ToServiceFactoryTest(ToServiceFactory serviceFactory) {
         this.serviceFactory = serviceFactory;
     }
 

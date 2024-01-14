@@ -2,17 +2,16 @@ package dev.migwel.sts.domain.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import dev.migwel.sts.Application;
+import dev.migwel.sts.TestSpringConfiguration;
 import dev.migwel.sts.domain.model.ToRequest;
 
-import dev.migwel.sts.domain.service.ToService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
-@SpringJUnitConfig(Application.class)
+@SpringJUnitConfig(TestSpringConfiguration.class)
 class ToServiceTest {
 
     private final List<ToService<?>> toServices;

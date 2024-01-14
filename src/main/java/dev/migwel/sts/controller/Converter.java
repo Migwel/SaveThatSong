@@ -5,6 +5,8 @@ import dev.migwel.sts.controller.dto.FromRequest;
 import dev.migwel.sts.controller.dto.FromSonosRequest;
 import dev.migwel.sts.controller.dto.ToDatabaseRequest;
 import dev.migwel.sts.controller.dto.ToRequest;
+import dev.migwel.sts.controller.dto.ToSpotifyRequest;
+
 import org.springframework.stereotype.Component;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -23,6 +25,7 @@ public class Converter {
     dev.migwel.sts.domain.model.ToRequest convert(ToRequest dto, String username) {
         return switch (dto) {
             case ToDatabaseRequest toDatabaseRequest -> convert(toDatabaseRequest, username);
+            case ToSpotifyRequest toSpotifyRequest -> convert(toSpotifyRequest);
         };
     }
 
@@ -49,5 +52,13 @@ public class Converter {
 
     ToDatabaseRequest convert(dev.migwel.sts.domain.model.ToDatabaseRequest model) {
         return new ToDatabaseRequest();
+    }
+
+    dev.migwel.sts.domain.model.ToSpotifyRequest convert(ToSpotifyRequest dto) {
+        return new dev.migwel.sts.domain.model.ToSpotifyRequest();
+    }
+
+    ToSpotifyRequest convert(dev.migwel.sts.domain.model.ToSpotifyRequest model) {
+        return new ToSpotifyRequest();
     }
 }

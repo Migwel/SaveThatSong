@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <Match>
+        <Or>
+            <Class name="dev.migwel.sts.spotify.SpotifyService"/>
+            <Class name="dev.migwel.sts.spotify.SpotifyAuthenticationService"/>
+        </Or>
+        <Bug code="EI2" />
+    </Match>
+</FindBugsFilter>
