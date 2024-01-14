@@ -5,6 +5,7 @@ import dev.migwel.sts.controller.dto.FromRequest;
 import dev.migwel.sts.controller.dto.FromSonosRequest;
 import dev.migwel.sts.controller.dto.ToDatabaseRequest;
 import dev.migwel.sts.controller.dto.ToRequest;
+import dev.migwel.sts.controller.dto.ToSpotifyRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,9 +30,13 @@ class ConverterTest {
     @Test
     void convert_returnsCorrectToRequestClass() {
         ToRequest databaseRequest = new ToDatabaseRequest();
+        ToRequest spotifyRequest = new ToSpotifyRequest();
         Assertions.assertEquals(
                 dev.migwel.sts.domain.model.ToDatabaseRequest.class,
                 converter.convert(databaseRequest, "user").getClass());
+        Assertions.assertEquals(
+                dev.migwel.sts.domain.model.ToSpotifyRequest.class,
+                converter.convert(spotifyRequest, "user").getClass());
     }
 
     @Test

@@ -1,0 +1,11 @@
+{
+  "tracks": {
+    "href": "https://api.spotify.com/v1/search?query=track%3Atitle+artist%3Aartist&type=track&locale=en-US%2Cen%3Bq%3D0.5&offset=0&limit=1",
+    "items": [],
+    "limit": 1,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 0
+  }
+}
