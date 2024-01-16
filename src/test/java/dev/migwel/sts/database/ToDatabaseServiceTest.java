@@ -9,6 +9,7 @@ import dev.migwel.sts.domain.exception.SaveToException;
 import dev.migwel.sts.domain.model.ToDatabaseRequest;
 import dev.migwel.sts.domain.model.Song;
 
+import dev.migwel.sts.domain.model.ToResult;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,16 +32,19 @@ class ToDatabaseServiceTest {
                 new dev.migwel.sts.database.entities.Song(
                         1L, "user", "artist", "title", "artist - title");
         doReturn(entitySong).when(songRepository).save(any());
-        saveService.save(song, new ToDatabaseRequest("user"));
+        ToResult result = saveService.save(song, new ToDatabaseRequest("user"));
+        assertTrue(result.isSuccess());
+        assertNull(result.getErrorMessage());
     }
 
     @Test
     void save_persistFailure() {
-        doThrow(new InvalidDataAccessResourceUsageException("Could not write song"))
+        doThrow(new InvalidDataAccessResourceUsageException("Could not write title"))
                 .when(songRepository)
                 .save(any());
         Song song = new Song("artist", "title", "artist - title");
-        assertThrows(
-                SaveToException.class, () -> saveService.save(song, new ToDatabaseRequest("user")));
+        ToResult result = saveService.save(song, new ToDatabaseRequest("user"));
+        assertFalse(result.isSuccess());
+        assertNotNull(result.getErrorMessage());
     }
 }

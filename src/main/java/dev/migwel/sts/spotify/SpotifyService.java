@@ -3,6 +3,8 @@ package dev.migwel.sts.spotify;
 import dev.migwel.sts.domain.model.Song;
 import dev.migwel.sts.spotify.dto.SearchResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,6 +26,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 @Service
 public class SpotifyService {
+    private static final Logger log = LogManager.getLogger(SpotifyService.class);
+
     private final SpotifyConfiguration spotifyConfiguration;
     private final WebClient webClient;
 
@@ -39,16 +43,22 @@ public class SpotifyService {
                 String.format(
                         spotifyConfiguration.getSearchUrl(),
                         URLEncoder.encode(query, StandardCharsets.UTF_8));
-        SearchResponse response =
-                webClient
-                        .get()
-                        .uri(URI.create(url))
-                        .attributes(
-                                ServletOAuth2AuthorizedClientExchangeFilterFunction
-                                        .clientRegistrationId("spotify"))
-                        .retrieve()
-                        .bodyToMono(SearchResponse.class)
-                        .block();
+        SearchResponse response;
+        try {
+            response =
+                    webClient
+                            .get()
+                            .uri(URI.create(url))
+                            .attributes(
+                                    ServletOAuth2AuthorizedClientExchangeFilterFunction
+                                            .clientRegistrationId("spotify"))
+                            .retrieve()
+                            .bodyToMono(SearchResponse.class)
+                            .block();
+        } catch (RuntimeException e) {
+            log.warn("An exception occurred while trying to search for the title " + song, e);
+            return Optional.empty();
+        }
         if (noTrackFound(response)) {
             return Optional.empty();
         }

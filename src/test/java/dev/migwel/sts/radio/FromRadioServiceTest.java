@@ -37,7 +37,7 @@ class FromRadioServiceTest {
     @Test
     void search_songCanBeFound() {
         String artist = "Great artist";
-        String title = "Amazing song";
+        String title = "Amazing title";
         doReturn(new SongInfo("raw", artist, title)).when(icyReader).currentlyPlaying();
         Optional<Song> optionalSong = fromRadioService.search(new FromRadioRequest("validUrl"));
         assertTrue(optionalSong.isPresent());

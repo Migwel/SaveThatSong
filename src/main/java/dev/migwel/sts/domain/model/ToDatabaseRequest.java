@@ -7,7 +7,7 @@ public final class ToDatabaseRequest implements ToRequest {
     private final String username;
 
     /**
-     * @param username The username of the authenticated user, for which the song should be
+     * @param username The username of the authenticated user, for which the title should be
      *     persisted in the database
      */
     public ToDatabaseRequest(String username) {

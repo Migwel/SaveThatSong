@@ -1,6 +1,7 @@
 package dev.migwel.sts.spotify;
 
 import dev.migwel.sts.domain.model.Song;
+import dev.migwel.sts.domain.model.ToResult;
 import dev.migwel.sts.domain.model.ToSpotifyRequest;
 import dev.migwel.sts.domain.service.ToService;
 
@@ -30,12 +31,13 @@ public class ToSpotifyService implements ToService<ToSpotifyRequest> {
     }
 
     @Override
-    public void save(Song song, ToSpotifyRequest toRequest) {
+    public ToResult save(Song song, ToSpotifyRequest toRequest) {
         Optional<SpotifySong> searchResult = spotifyService.search(song);
         if (searchResult.isEmpty()) {
-            log.info("Could not find song : " + song);
-            return;
+            log.info("Could not find title : " + song);
+            return ToResult.failure("The title could not be found");
         }
         spotifyService.saveToPlaylist(searchResult.get().id());
+        return ToResult.success();
     }
 }
