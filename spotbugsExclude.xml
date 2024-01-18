@@ -4,7 +4,15 @@
         <Or>
             <Class name="dev.migwel.sts.spotify.SpotifyService"/>
             <Class name="dev.migwel.sts.spotify.SpotifyAuthenticationService"/>
+            <Class name="dev.migwel.sts.sonos.SonosService"/>
+            <Class name="dev.migwel.sts.sonos.SonosAuthenticationService"/>
         </Or>
         <Bug code="EI2" />
+    </Match>
+    <Match>
+        <Or>
+            <Class name="dev.migwel.sts.sonos.dto.Group"/>
+        </Or>
+        <Bug pattern="PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES" />
     </Match>
 </FindBugsFilter>

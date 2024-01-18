@@ -1,0 +1,22 @@
+{
+  "_objectType": "metadataStatus",
+  "container": {
+    "_objectType": "container",
+    "name": "Maximum FM",
+    "type": "station",
+    "id": {
+      "_objectType": "universalMusicObjectId",
+      "serviceId": "303",
+      "objectId": "tunein:30035",
+      "accountId": "sn_1"
+    },
+    "service": {
+      "_objectType": "service",
+      "name": "Sonos Radio",
+      "id": "303",
+      "images": []
+    },
+    "images": []
+  },
+  "streamInfo": "The Cure - Friday I'm in love"
+}
