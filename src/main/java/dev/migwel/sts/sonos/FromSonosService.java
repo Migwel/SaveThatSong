@@ -7,6 +7,8 @@ import dev.migwel.sts.sonos.dto.Group;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.CheckForNull;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +31,8 @@ public class FromSonosService implements FromService<FromSonosRequest> {
 
     @Override
     public Optional<Song> search(FromSonosRequest searchRequest) {
-        Optional<Group> activeGroup = getActiveGroup();
+        Optional<Group> activeGroup =
+                getActiveGroup(searchRequest.householdId(), searchRequest.groupId());
         if (activeGroup.isEmpty()) {
             return Optional.empty();
         }
@@ -41,8 +44,12 @@ public class FromSonosService implements FromService<FromSonosRequest> {
         return playbackMetadataParser.parse(playbackMetadataResponse);
     }
 
-    private Optional<Group> getActiveGroup() {
-        List<String> households = sonosService.getHouseholds();
+    private Optional<Group> getActiveGroup(
+            @CheckForNull String householdId, @CheckForNull String groupId) {
+        if (groupId != null) {
+            return Optional.of(new Group(groupId, null, Collections.emptyList()));
+        }
+        List<String> households = getHouseholds(householdId);
         for (String household : households) {
             List<Group> activeGroups =
                     sonosService.getGroups(household, PlaybackState.PLAYBACK_STATE_PLAYING);
@@ -51,5 +58,12 @@ public class FromSonosService implements FromService<FromSonosRequest> {
             }
         }
         return Optional.empty();
+    }
+
+    private List<String> getHouseholds(@CheckForNull String householdId) {
+        if (householdId != null) {
+            return List.of(householdId);
+        }
+        return sonosService.getHouseholds();
     }
 }
