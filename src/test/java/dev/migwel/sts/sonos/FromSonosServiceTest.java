@@ -2,7 +2,7 @@ package dev.migwel.sts.sonos;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import dev.migwel.sts.domain.model.FromSonosRequest;
 import dev.migwel.sts.domain.model.Song;
@@ -74,5 +74,20 @@ class FromSonosServiceTest {
         Optional<Song> foundSong = fromSonosService.search(new FromSonosRequest(null, null));
         assertTrue(foundSong.isPresent());
         assertEquals(song, foundSong.get());
+    }
+
+    @Test
+    void search_dontSearchForHouseholdsIfProvided() {
+        when(sonosService.getGroups(any(), any())).thenReturn(Collections.emptyList());
+        fromSonosService.search(new FromSonosRequest("householdId", null));
+        verify(sonosService, never()).getHouseholds();
+    }
+
+    @Test
+    void search_dontSearchForGroupsIfProvided() {
+        when(sonosService.getPlaybackMetadata(any())).thenReturn(null);
+        fromSonosService.search(new FromSonosRequest(null, "groupId"));
+        verify(sonosService, never()).getHouseholds();
+        verify(sonosService, never()).getGroups(any(), any());
     }
 }
