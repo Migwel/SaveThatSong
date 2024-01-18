@@ -1,0 +1,135 @@
+{
+  "_objectType": "groups",
+  "groups": [
+    {
+      "_objectType": "group",
+      "id": "group:group1",
+      "name": "First Group",
+      "coordinatorId": "playerId1",
+      "playbackState": "PLAYBACK_STATE_PLAYING",
+      "playerIds": [
+        "playerId1",
+        "playerId2"
+      ]
+    },
+    {
+      "_objectType": "group",
+      "id": "group:group2",
+      "name": "Second Group",
+      "coordinatorId": "playerId3",
+      "playbackState": "PLAYBACK_STATE_IDLE",
+      "playerIds": [
+        "playerId3"
+      ]
+    }
+  ],
+  "players": [
+    {
+      "_objectType": "player",
+      "id": "playerId1",
+      "name": "Living Room",
+      "websocketUrl": "wss:\/\/127.0.01:1443\/websocket\/api",
+      "softwareVersion": "76.2-47270",
+      "apiVersion": "1.37.1",
+      "minApiVersion": "1.1.0",
+      "isUnregistered": false,
+      "capabilities": [
+        "CLOUD",
+        "PLAYBACK",
+        "AUDIO_CLIP"
+      ],
+      "zoneInfo": {
+        "_objectType": "activeZone",
+        "name": "Living Room",
+        "members": [
+          {
+            "_objectType": "activeZoneMember",
+            "id": "playerId1",
+            "channelMap": [],
+            "state": {
+              "_objectType": "zoneMemberState",
+              "disconnected": false
+            }
+          }
+        ]
+      },
+      "deviceIds": [
+        "playerId1"
+      ]
+    },
+    {
+      "_objectType": "player",
+      "id": "playerId2",
+      "name": "Living Room 2",
+      "websocketUrl": "wss:\/\/127.0.01:1443\/websocket\/api",
+      "softwareVersion": "76.2-47270",
+      "apiVersion": "1.37.1",
+      "minApiVersion": "1.1.0",
+      "isUnregistered": false,
+      "capabilities": [
+        "CLOUD",
+        "HT_PLAYBACK",
+        "PLAYBACK",
+        "HT_POWER_STATE",
+        "AIRPLAY",
+        "VOICE",
+        "AUDIO_CLIP",
+        "HDMI"
+      ],
+      "zoneInfo": {
+        "_objectType": "activeZone",
+        "name": "Living Room 2",
+        "members": [
+          {
+            "_objectType": "activeZoneMember",
+            "id": "playerId2",
+            "channelMap": [],
+            "state": {
+              "_objectType": "zoneMemberState",
+              "disconnected": false
+            }
+          }
+        ]
+      },
+      "deviceIds": [
+        "playerId2"
+      ]
+    },
+    {
+      "_objectType": "player",
+      "id": "playerId3",
+      "name": "Kitchen",
+      "websocketUrl": "wss:\/\/127.0.0.1:1443\/websocket\/api",
+      "softwareVersion": "76.2-47270",
+      "apiVersion": "1.37.1",
+      "minApiVersion": "1.1.0",
+      "isUnregistered": false,
+      "capabilities": [
+        "CLOUD",
+        "PLAYBACK",
+        "AIRPLAY",
+        "VOICE",
+        "AUDIO_CLIP"
+      ],
+      "zoneInfo": {
+        "_objectType": "activeZone",
+        "name": "Kitchen",
+        "members": [
+          {
+            "_objectType": "activeZoneMember",
+            "id": "playerId3",
+            "channelMap": [],
+            "state": {
+              "_objectType": "zoneMemberState",
+              "disconnected": false
+            }
+          }
+        ]
+      },
+      "deviceIds": [
+        "playerId3"
+      ]
+    }
+  ],
+  "partial": false
+}

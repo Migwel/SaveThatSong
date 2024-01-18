@@ -24,7 +24,7 @@ public class ResultConverter {
         return new ToResult(toResult.isSuccess(), toResult.getErrorMessage());
     }
 
-    private Song convert(@CheckForNull dev.migwel.sts.domain.model.Song song) {
+    public Song convert(@CheckForNull dev.migwel.sts.domain.model.Song song) {
         if (song == null) {
             return null;
         }

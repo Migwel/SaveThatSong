@@ -1,0 +1,111 @@
+{
+  "_objectType": "metadataStatus",
+  "container": {
+    "_objectType": "container",
+    "name": "French songs",
+    "type": "playlist",
+    "id": {
+      "_objectType": "universalMusicObjectId",
+      "serviceId": "9",
+      "objectId": "spotify:playlist:playlist123",
+      "accountId": "sn_5"
+    },
+    "service": {
+      "_objectType": "service",
+      "name": "Spotify",
+      "id": "9",
+      "images": []
+    },
+    "imageUrl": "https:\/\/example.com",
+    "images": [
+      {
+        "_objectType": "image",
+        "url": "https:\/\/example.com"
+      }
+    ]
+  },
+  "currentItem": {
+    "_objectType": "queueItem",
+    "track": {
+      "_objectType": "track",
+      "type": "track",
+      "name": "Ne me quitte pas",
+      "imageUrl": "https://example.com",
+      "images": [
+        {
+          "_objectType": "image",
+          "url": "https://example.com"
+        }
+      ],
+      "album": {
+        "_objectType": "album",
+        "name": "Amsterdam"
+      },
+      "artist": {
+        "_objectType": "artist",
+        "name": "Jacques Brel"
+      },
+      "id": {
+        "_objectType": "universalMusicObjectId",
+        "serviceId": "9",
+        "objectId": "spotify:track:trackId",
+        "accountId": "sn_5"
+      },
+      "service": {
+        "_objectType": "service",
+        "name": "Spotify",
+        "id": "9",
+        "images": []
+      },
+      "durationMillis": 229000,
+      "quality": {
+        "_objectType": "trackQuality"
+      }
+    },
+    "policies": {
+      "_objectType": "playbackPolicy"
+    }
+  },
+  "nextItem": {
+    "_objectType": "queueItem",
+    "track": {
+      "_objectType": "track",
+      "type": "track",
+      "name": "Non, je ne regrette rien",
+      "imageUrl": "https://example.com",
+      "images": [
+        {
+          "_objectType": "image",
+          "url": "https://example.com"
+        }
+      ],
+      "album": {
+        "_objectType": "album",
+        "name": "Eternelle"
+      },
+      "artist": {
+        "_objectType": "artist",
+        "name": "Édith Piaf"
+      },
+      "id": {
+        "_objectType": "universalMusicObjectId",
+        "serviceId": "9",
+        "objectId": "spotify:track:trackId2",
+        "accountId": "sn_5"
+      },
+      "service": {
+        "_objectType": "service",
+        "name": "Spotify",
+        "id": "9",
+        "images": []
+      },
+      "durationMillis": 142000,
+      "quality": {
+        "_objectType": "trackQuality"
+      }
+    },
+    "policies": {
+      "_objectType": "playbackPolicy"
+    }
+  }
+}

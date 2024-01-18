@@ -1,3 +1,6 @@
 package dev.migwel.sts.domain.model;
 
-public record FromSonosRequest(String householdId, String groupId) implements FromRequest {}
+import javax.annotation.CheckForNull;
+
+public record FromSonosRequest(@CheckForNull String householdId, @CheckForNull String groupId)
+        implements FromRequest {}
