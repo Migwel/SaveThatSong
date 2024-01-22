@@ -7,11 +7,14 @@ import dev.migwel.sts.domain.model.ToRequest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
-@SpringJUnitConfig(TestSpringConfiguration.class)
+@SpringBootTest
+@AutoConfigureTestDatabase
 class ToServiceTest {
 
     private final List<ToService<?>> toServices;

@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller.error;
+package dev.migwel.sts.controller.api.error;
 
 public class FieldError {
     private String field;

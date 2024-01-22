@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
 import dev.migwel.sts.spotify.SpotifyAuthenticationService;
 

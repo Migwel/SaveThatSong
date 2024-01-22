@@ -1,11 +1,11 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
-import dev.migwel.sts.controller.dto.FromRadioRequest;
-import dev.migwel.sts.controller.dto.FromRequest;
-import dev.migwel.sts.controller.dto.FromSonosRequest;
-import dev.migwel.sts.controller.dto.ToDatabaseRequest;
-import dev.migwel.sts.controller.dto.ToRequest;
-import dev.migwel.sts.controller.dto.ToSpotifyRequest;
+import dev.migwel.sts.controller.api.dto.FromRadioRequest;
+import dev.migwel.sts.controller.api.dto.FromRequest;
+import dev.migwel.sts.controller.api.dto.FromSonosRequest;
+import dev.migwel.sts.controller.api.dto.ToDatabaseRequest;
+import dev.migwel.sts.controller.api.dto.ToRequest;
+import dev.migwel.sts.controller.api.dto.ToSpotifyRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

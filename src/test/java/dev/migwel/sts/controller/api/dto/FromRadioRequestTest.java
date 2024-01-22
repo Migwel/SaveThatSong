@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller.dto;
+package dev.migwel.sts.controller.api.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,9 +1,9 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
-import dev.migwel.sts.controller.dto.FromRequest;
-import dev.migwel.sts.controller.dto.SaveRequest;
-import dev.migwel.sts.controller.dto.SaveResponse;
-import dev.migwel.sts.controller.dto.ToRequest;
+import dev.migwel.sts.controller.api.dto.FromRequest;
+import dev.migwel.sts.controller.api.dto.SaveRequest;
+import dev.migwel.sts.controller.api.dto.SaveResponse;
+import dev.migwel.sts.controller.api.dto.ToRequest;
 import dev.migwel.sts.domain.model.SaveResult;
 import dev.migwel.sts.domain.service.SaveService;
 
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/save")
+@RequestMapping("/api/save")
 public class SaveController {
 
     private static final Logger logger = LogManager.getLogger(SaveController.class);

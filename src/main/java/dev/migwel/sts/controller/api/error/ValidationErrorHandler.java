@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller.error;
+package dev.migwel.sts.controller.api.error;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidTypeIdException;

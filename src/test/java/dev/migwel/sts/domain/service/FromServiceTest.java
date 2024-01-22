@@ -2,16 +2,20 @@ package dev.migwel.sts.domain.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import dev.migwel.sts.SecurityConfig;
 import dev.migwel.sts.TestSpringConfiguration;
 import dev.migwel.sts.domain.model.FromRequest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
-@SpringJUnitConfig(TestSpringConfiguration.class)
+@SpringBootTest
+@AutoConfigureTestDatabase
 class FromServiceTest {
 
     private final List<FromService<?>> fromServices;
