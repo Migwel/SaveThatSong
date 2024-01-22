@@ -1,5 +1,6 @@
 package dev.migwel.sts;
 
+import dev.migwel.sts.website.WebConfig;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +10,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 
 @TestConfiguration
-@Import(Application.class)
+@Import(value = {Application.class, WebConfig.class})
 public class TestSpringConfiguration {
     @Bean
     OAuth2AuthorizedClientManager authorizedClientManager() {

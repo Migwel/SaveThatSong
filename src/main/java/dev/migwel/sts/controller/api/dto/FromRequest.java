@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller.dto;
+package dev.migwel.sts.controller.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

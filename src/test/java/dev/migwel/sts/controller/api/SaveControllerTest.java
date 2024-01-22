@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -38,7 +38,7 @@ class SaveControllerTest {
     @WithMockUser
     void save_emptyRequest() throws Exception {
         this.mockMvc
-                .perform(post("/save"))
+                .perform(post("/api/save"))
                 .andExpect(status().isBadRequest())
                 .andExpect(
                         content()
@@ -51,7 +51,7 @@ class SaveControllerTest {
     void save_incorrectRequestRadioWithoutUrl() throws Exception {
         this.mockMvc
                 .perform(
-                        post("/save")
+                        post("/api/save")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"from\":{\"type\":\"RADIO\"}, \"to\":{\"type\": \"DATABASE\"}}'"))
@@ -67,7 +67,7 @@ class SaveControllerTest {
     void save_incorrectType() throws Exception {
         this.mockMvc
                 .perform(
-                        post("/save")
+                        post("/api/save")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"from\":{\"type\":\"INCORRECT\"}, \"to\":{\"type\": \"DATABASE\"}}'"))
@@ -87,7 +87,7 @@ class SaveControllerTest {
                                 new Song("artist", "title", "artist - title"), ToResult.success()));
         this.mockMvc
                 .perform(
-                        post("/save")
+                        post("/api/save")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"from\":{\"type\":\"RADIO\", \"url\":\"https://stream.url\"}, \"to\":{\"type\": \"DATABASE\"}}'"))
@@ -100,7 +100,7 @@ class SaveControllerTest {
         when(saveService.save(any(), any())).thenReturn(SaveResult.noSongFound());
         this.mockMvc
                 .perform(
-                        post("/save")
+                        post("/api/save")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"from\":{\"type\":\"RADIO\", \"url\":\"https://stream.url\"}, \"to\":{\"type\": \"DATABASE\"}}'"))
@@ -112,7 +112,7 @@ class SaveControllerTest {
     void save_withoutAuthenticatedUser() throws Exception {
         this.mockMvc
                 .perform(
-                        post("/save")
+                        post("/api/save")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"from\":{\"type\":\"RADIO\", \"url\":\"https://stream.url\"}, \"to\":{\"type\": \"DATABASE\"}}'"))
@@ -129,7 +129,7 @@ class SaveControllerTest {
                                 ToResult.failure("errorMessage")));
         this.mockMvc
                 .perform(
-                        post("/save")
+                        post("/api/save")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"from\":{\"type\":\"RADIO\", \"url\":\"https://stream.url\"}, \"to\":{\"type\": \"DATABASE\"}}'"))

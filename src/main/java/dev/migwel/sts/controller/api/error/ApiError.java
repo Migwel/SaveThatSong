@@ -1,4 +1,4 @@
-package dev.migwel.sts.controller.error;
+package dev.migwel.sts.controller.api.error;
 
 import java.util.ArrayList;
 import java.util.List;

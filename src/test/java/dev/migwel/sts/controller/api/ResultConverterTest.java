@@ -1,6 +1,6 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
-import dev.migwel.sts.controller.dto.SaveResponse;
+import dev.migwel.sts.controller.api.dto.SaveResponse;
 import dev.migwel.sts.domain.model.SaveResult;
 import dev.migwel.sts.domain.model.Song;
 import dev.migwel.sts.domain.model.ToResult;

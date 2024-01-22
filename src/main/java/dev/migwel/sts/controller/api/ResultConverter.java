@@ -1,8 +1,8 @@
-package dev.migwel.sts.controller;
+package dev.migwel.sts.controller.api;
 
-import dev.migwel.sts.controller.dto.SaveResponse;
-import dev.migwel.sts.controller.dto.Song;
-import dev.migwel.sts.controller.dto.ToResult;
+import dev.migwel.sts.controller.api.dto.SaveResponse;
+import dev.migwel.sts.controller.api.dto.Song;
+import dev.migwel.sts.controller.api.dto.ToResult;
 import dev.migwel.sts.domain.model.SaveResult;
 
 import org.springframework.stereotype.Component;
