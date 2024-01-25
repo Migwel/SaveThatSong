@@ -9,13 +9,20 @@
 <header th:fragment="header" class="py-2 mb-3 border-bottom bg-primary text-white">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
-            <div class="col text-start"><a href="/">Save That Song</a></div>
-            <ul class="nav col-5 me-3 justify-content-center">
+            <div class="col text-start py-2"><a href="/">Save That Song</a></div>
+            <ul class="nav col-5 me-3 justify-content-center" sec:authorize="isAuthenticated()">
                 <li class="nav-item"><a class="nav-link" href="sonos">Sonos</a></li>
                 <li class="nav-item"><a class="nav-link" href="spotify">Spotify</a></li>
                 <li class="nav-item"><a class="nav-link" href="database">Database</a></li>
             </ul>
-            <div class="col text-end"><a href="login">Login</a></div>
+            <div class="col text-end">
+                <div sec:authorize="isAnonymous()">
+                    <a href="login">Login</a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a href="logout">Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
