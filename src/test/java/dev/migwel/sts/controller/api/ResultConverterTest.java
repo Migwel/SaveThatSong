@@ -1,12 +1,16 @@
 package dev.migwel.sts.controller.api;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import dev.migwel.sts.controller.api.dto.SaveResponse;
+import dev.migwel.sts.domain.model.PersistedSong;
 import dev.migwel.sts.domain.model.SaveResult;
 import dev.migwel.sts.domain.model.Song;
 import dev.migwel.sts.domain.model.ToResult;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Date;
 
 class ResultConverterTest {
 
@@ -51,5 +55,20 @@ class ResultConverterTest {
         assertNotNull(response.toResult());
         assertTrue(response.toResult().success());
         assertNull(response.toResult().errorMessage());
+    }
+
+    @Test
+    void convert_persistedSong() {
+        PersistedSong song =
+                new PersistedSong(
+                        new Song("artist", "title", "artist - title"), "username", new Date());
+        var convertedSong = converter.convert(song);
+
+        assertNotNull(convertedSong);
+        assertNotNull(convertedSong.song());
+        assertEquals(convertedSong.song().artist(), song.song().artist());
+        assertEquals(convertedSong.song().title(), song.song().title());
+        assertEquals(convertedSong.song().rawData(), song.song().rawData());
+        assertEquals(convertedSong.creationDate(), song.creationDate());
     }
 }

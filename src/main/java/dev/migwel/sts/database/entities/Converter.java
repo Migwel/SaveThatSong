@@ -15,4 +15,9 @@ public class Converter {
         return new dev.migwel.sts.domain.model.Song(
                 entity.getArtist(), entity.getTitle(), entity.getRawData());
     }
+
+    public dev.migwel.sts.domain.model.PersistedSong convertToPersistedSong(Song entity) {
+        return new dev.migwel.sts.domain.model.PersistedSong(
+                convert(entity), entity.getUsername(), entity.getCreationDate());
+    }
 }

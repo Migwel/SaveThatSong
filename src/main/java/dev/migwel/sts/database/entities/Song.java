@@ -43,6 +43,21 @@ public class Song {
         this.rawData = rawData;
     }
 
+    public Song(
+            Long id,
+            String username,
+            String artist,
+            String title,
+            String rawData,
+            Date creationDate) {
+        this.id = id;
+        this.username = username;
+        this.artist = artist;
+        this.title = title;
+        this.rawData = rawData;
+        this.creationDate = new Date(creationDate.getTime());
+    }
+
     public Long getId() {
         return id;
     }

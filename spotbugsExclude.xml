@@ -6,8 +6,12 @@
             <Class name="dev.migwel.sts.spotify.SpotifyAuthenticationService"/>
             <Class name="dev.migwel.sts.sonos.SonosService"/>
             <Class name="dev.migwel.sts.sonos.SonosAuthenticationService"/>
+            <Class name="~dev.migwel.sts.controller.api.dto.*"/>
         </Or>
-        <Bug code="EI2" />
+        <Or>
+            <Bug code="EI" />
+            <Bug code="EI2" />
+        </Or>
     </Match>
     <Match>
         <Or>
